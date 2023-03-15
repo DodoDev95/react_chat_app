@@ -1,26 +1,33 @@
-import React from 'react';
+import React, { useState, useRef, LegacyRef } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './components/ChatApp';
+import Auth from './components/Auth'
+import Cookies from 'universal-cookie'
+import { ChatApp } from './components/ChatApp';
+
+const cookies = new Cookies();
 
 function App() {
+
+  const [isAuth, setIsAuth] = useState(cookies.get('auth-token'));
+  const [room, setRoom] = useState("");
+
+
+  const roomName: LegacyRef<HTMLInputElement> = useRef<HTMLInputElement>(null);
+
+  if(!isAuth) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Auth setIsAuth={setIsAuth} />
   );
+}
+
+return <> {room ? <ChatApp room={room} /> : <div className='room'>
+  <label>Enter room name:</label>
+  <input type="text" ref={roomName}/>
+  <button onClick={() => roomName.current && setRoom(roomName.current.value)}>Enter Chat</button>
+</div> }  </>
+
 }
 
 export default App;
