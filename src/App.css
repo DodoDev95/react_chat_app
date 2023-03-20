@@ -4,56 +4,89 @@
   padding: 0;
 }
 
-body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
 #root {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 
-.chatApp {
+.auth,
+.room {
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-flow: row wrap;
-  width: 70%;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 30%;
+  flex-wrap: wrap;
+  background-color: rgba(84, 139, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
 }
 
-.chatHistory {
+.auth p {
+  flex-basis: 100%;
+  text-align: center;
+  color: white;
+  font-size: 1.3rem;
+}
+.auth h2,
+.room label {
+  color: white;
+  font-size: 1.3rem;
   text-align: center;
   flex-basis: 100%;
-  width: 70%;
-  height: 50vh;
-  overflow: auto;
 }
-.chatBubble {
-  display: inline-block;
-  width: 40%;
+
+.btn {
+  border: none;
   border-radius: 10px;
-  height: auto;
-  overflow-wrap: break-word;
+  padding: 10px;
+  background-color: rgba(39, 59, 245, 0.8);
+  color: white;
   margin: 10px;
+}
+
+.btn:hover {
+  background-color: rgba(98, 113, 255, 0.8);
+}
+
+.room input {
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
+  margin-top: 5px;
+  flex-basis: 100%;
+}
+
+.chat-container {
+  display: flex;
+}
+.chat-bubble {
+  margin: 10px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: auto;
+  background-color: lightyellow;
+  border-radius: 10px;
   padding: 10px;
 }
 
-form {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  width: 100%;
-}
-.enterMessage {
-  padding: 20px;
-  width: 50%;
+.input-message {
+  padding: 10px;
+  border: none;
+  margin-right: 5px;
+  border-radius: 10px;
+  flex-basis: 90%;
 }
 
-.btnSubmit {
-  padding: 20px;
-  margin-left: 10px;
+.input-form {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  background-color: rgba(84, 139, 255, 0.8);
+  padding: 10px;
+  border-radius: 10px;
 }

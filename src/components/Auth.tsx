@@ -29,8 +29,9 @@ const signInWithGoogle = async () => {
 
  return (
     <div className='auth'>
+      <h2>Welcome to React Chat</h2>
       <p>Sign in with your Google account to continue</p>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
+      <button className='btn google' onClick={signInWithGoogle}>Sign in with Google</button>
     </div>
   )
 }
