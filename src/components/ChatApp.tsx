@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEventHandler } from "react";
+import React, { useState, useEffect, MouseEventHandler, useRef } from "react";
 import {
   addDoc,
   collection,
@@ -21,6 +21,7 @@ interface Message {
   timestamp: any;
   user: string;
   room: string;
+  color: string;
 }
 
 const DEFAULT_MESSAGE: Message = {
@@ -29,6 +30,7 @@ const DEFAULT_MESSAGE: Message = {
   timestamp: null,
   user: "",
   room: "",
+  color: "",
 };
 
 type Props = {
@@ -36,9 +38,24 @@ type Props = {
   signUserOut: MouseEventHandler;
 };
 
+const colors = [
+  "#FFC312",
+  "#C4E538",
+  "#12CBC4",
+  "#FDA7DF",
+  "#ED4C67",
+  "#F79F1F",
+  "#A3CB38",
+  "#1289A7",
+  "#D980FA",
+  "#B53471",
+];
+
 export const ChatApp = ({ room, signUserOut }: Props) => {
   const [newMessage, setNewMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
+  const [userColor, setUserColor] = useState<string>("");
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   const messagesRef = collection(dataBase, "messages");
 
@@ -57,12 +74,14 @@ export const ChatApp = ({ room, signUserOut }: Props) => {
           ...doc.data(),
           id: doc.id,
         });
-
         console.log(doc.data());
       });
 
       setMessages(messages);
     });
+
+    // choose a random color for the user
+    setUserColor(colors[Math.floor(Math.random() * colors.length)]);
 
     return () => unsubscribe();
   }, []);
@@ -71,13 +90,20 @@ export const ChatApp = ({ room, signUserOut }: Props) => {
     e.preventDefault();
 
     if (newMessage) {
+      setNewMessage("");
       await addDoc(messagesRef, {
         text: newMessage,
         timestamp: Date.now(),
         user: auth.currentUser?.displayName,
         room: room,
+        color: userColor,
       });
-      setNewMessage("");
+
+      if (chatContainerRef.current) {
+        const chatContainer = chatContainerRef.current;
+        const lastMessage = chatContainer.lastElementChild as HTMLElement;
+        lastMessage.scrollIntoView({ behavior: "smooth" });
+      }
     } else {
       return;
     }
@@ -89,7 +115,7 @@ export const ChatApp = ({ room, signUserOut }: Props) => {
         Sign Out
       </button>
       <h1>Welcome to the chat {auth.currentUser?.displayName}</h1>
-      <div className="chat-container">
+      <div className="chat-container" ref={chatContainerRef}>
         {messages.map((message) => (
           <div
             className={
@@ -98,6 +124,7 @@ export const ChatApp = ({ room, signUserOut }: Props) => {
                 : "chat-bubble recieved"
             }
             key={message.id}
+            style={{ backgroundColor: message.color }}
           >
             <p className="message text">{message.text}</p>
             <p className="message user">{message.user}</p>

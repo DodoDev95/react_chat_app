@@ -62,16 +62,28 @@
 
 .chat-container {
   display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 .chat-bubble {
   margin: 10px;
   display: inline-block;
   position: relative;
   width: 200px;
-  height: auto;
+  max-height: 400px;
   background-color: lightyellow;
   border-radius: 10px;
   padding: 10px;
+  word-wrap: break-word;
+  overflow: auto;
+  flex-shrink: 0;
+}
+
+.chat-container::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
 
 .input-message {
