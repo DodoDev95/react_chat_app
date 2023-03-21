@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/%7Breact_chat_app%7D/static/css/main.f0af7c58.css",
+    "main.js": "/%7Breact_chat_app%7D/static/js/main.e0fbefcc.js",
+    "static/js/787.6f726199.chunk.js": "/%7Breact_chat_app%7D/static/js/787.6f726199.chunk.js",
+    "static/media/pexels-hristo-fidanov-1252873.jpg": "/%7Breact_chat_app%7D/static/media/pexels-hristo-fidanov-1252873.1a7054f9f35701e948e0.jpg",
+    "index.html": "/%7Breact_chat_app%7D/index.html",
+    "main.f0af7c58.css.map": "/%7Breact_chat_app%7D/static/css/main.f0af7c58.css.map",
+    "main.e0fbefcc.js.map": "/%7Breact_chat_app%7D/static/js/main.e0fbefcc.js.map",
+    "787.6f726199.chunk.js.map": "/%7Breact_chat_app%7D/static/js/787.6f726199.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f0af7c58.css",
+    "static/js/main.e0fbefcc.js"
+  ]
+}
