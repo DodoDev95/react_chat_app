@@ -10,6 +10,9 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
+  background-image: url("./media/pexels-hristo-fidanov-1252873.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .auth,
@@ -19,19 +22,18 @@
   justify-content: center;
   flex-wrap: wrap;
   height: 30%;
-  flex-wrap: wrap;
-  background-color: rgba(84, 139, 255, 0.8);
+  backdrop-filter: blur(10px);
+  background-color: #ffffff2b;
+  border-radius: 20px;
   padding: 20px;
-  border-radius: 10px;
 }
 
 .auth p {
   flex-basis: 100%;
   text-align: center;
   color: white;
-  font-size: 1.3rem;
 }
-.auth h2,
+.auth h1,
 .room label {
   color: white;
   font-size: 1.3rem;
@@ -43,7 +45,7 @@
   border: none;
   border-radius: 10px;
   padding: 10px;
-  background-color: rgba(39, 59, 245, 0.8);
+  background-color: rgb(35 128 189);
   color: white;
   margin: 10px;
 }
@@ -66,6 +68,10 @@
   max-width: 400px;
   max-height: 70vh;
   overflow-y: auto;
+  backdrop-filter: blur(10px);
+  margin-bottom: 10px;
+  background-color: #ffffff2b;
+  border-radius: 20px;
 }
 .chat-bubble {
   margin: 10px;
@@ -80,6 +86,17 @@
   overflow: auto;
   flex-shrink: 0;
 }
+.sent {
+  align-self: flex-end;
+}
+
+.received {
+  align-self: flex-start;
+}
+.welcome-msg {
+  color: #dcf0fd;
+  margin-bottom: 10px;
+}
 
 .chat-container::-webkit-scrollbar {
   width: 0px;
@@ -90,6 +107,7 @@
   padding: 10px;
   border: none;
   margin-right: 5px;
+  margin-bottom: 5px;
   border-radius: 10px;
   flex-basis: 90%;
 }
@@ -98,7 +116,23 @@
   display: flex;
   align-items: center;
   justify-content: right;
-  background-color: rgba(84, 139, 255, 0.8);
+  backdrop-filter: blur(10px);
+  margin-bottom: 10px;
+  background-color: #ffffff2b;
+  border-radius: 20px;
   padding: 10px;
   border-radius: 10px;
+}
+
+.logout-span {
+  color: #ffffffb8;
+  font-size: 12px;
+}
+
+.logout-span:hover {
+  cursor: pointer;
+}
+
+.logout-container {
+  text-align: center;
 }

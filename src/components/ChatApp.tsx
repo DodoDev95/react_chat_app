@@ -74,13 +74,11 @@ export const ChatApp = ({ room, signUserOut }: Props) => {
           ...doc.data(),
           id: doc.id,
         });
-        console.log(doc.data());
       });
 
       setMessages(messages);
     });
 
-    // choose a random color for the user
     setUserColor(colors[Math.floor(Math.random() * colors.length)]);
 
     return () => unsubscribe();
@@ -111,10 +109,12 @@ export const ChatApp = ({ room, signUserOut }: Props) => {
 
   return (
     <div className="background-overlay">
-      <button className="btn sign-out" onClick={signUserOut}>
+      {/* <button className="btn sign-out" onClick={signUserOut}>
         Sign Out
-      </button>
-      <h1>Welcome to the chat {auth.currentUser?.displayName}</h1>
+      </button>*/}
+      <h1 className="welcome-msg">
+        Welcome to the chat {auth.currentUser?.displayName}
+      </h1>
       <div className="chat-container" ref={chatContainerRef}>
         {messages.map((message) => (
           <div
@@ -142,6 +142,11 @@ export const ChatApp = ({ room, signUserOut }: Props) => {
           Send
         </button>
       </form>
+      <div className="logout-container">
+        <span onClick={signUserOut} className="logout-span">
+          Had enough? Click here to logout.
+        </span>
+      </div>
     </div>
   );
 };
